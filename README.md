@@ -43,7 +43,7 @@ $socket->enableEncryption('tls');
 $socket->disableEncryption('tls'); // tls_client
 ```
 
-To enable or disable encryption using `tls_server` method 
+To enable or disable encryption using `tls_server` method
 
 ```php
 $socket->enableEncryption('tls','server'); // tls_server
