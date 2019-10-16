@@ -261,27 +261,13 @@ class Socket
     }
 
     /**
-     * Checks if it is connected
-     *
-     * @return boolean
-     */
-    protected function isConnected() : bool
-    {
-        return is_resource($this->connection);
-    }
-
-    /**
      * Disconnects the current connection
      *
      * @return boolean
      */
     public function disconnect() : bool
     {
-        if (! is_resource($this->connection)) {
-            return true;
-        }
-
-        if (fclose($this->connection)) {
+        if (is_resource($this->connection) and fclose($this->connection)) {
             $this->connection = null;
         }
 
