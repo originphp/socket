@@ -72,7 +72,7 @@ When creating a Socket you can also provide `context` options that will be used 
 $socket = new Socket([
     'host' => 'example.com',
     'protocol' => 'tcp',
-    'port' => 80,
+    'port' => 443,
     'timeout' => 30,
     'persistent' => false,
     'context' => [
