@@ -54,20 +54,16 @@ class Socket
      * @var array
      */
     protected $encryptionMethods = [
-        'sslv3_client' => STREAM_CRYPTO_METHOD_SSLv3_CLIENT,
-        'sslv23_client' => STREAM_CRYPTO_METHOD_SSLv23_CLIENT,
-        'tls_client' => STREAM_CRYPTO_METHOD_TLS_CLIENT,
-        'tlsv1_client' => STREAM_CRYPTO_METHOD_TLSv1_0_CLIENT,
-        'tlsv11_client' => STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT,
-        'tlsv12_client' => STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
-        'sslv3_server' => STREAM_CRYPTO_METHOD_SSLv3_SERVER,
-        'sslv23_server' => STREAM_CRYPTO_METHOD_SSLv23_SERVER,
-        'tls_server' => STREAM_CRYPTO_METHOD_TLS_SERVER,
-        'tlsv1_server' => STREAM_CRYPTO_METHOD_TLSv1_0_SERVER,
-        'tlsv11_server' => STREAM_CRYPTO_METHOD_TLSv1_1_SERVER,
-        'tlsv12_server' => STREAM_CRYPTO_METHOD_TLSv1_2_SERVER
+        'ssl'   => STREAM_CRYPTO_METHOD_SSLv23_CLIENT,
+        'sslv2' => STREAM_CRYPTO_METHOD_SSLv2_CLIENT,
+        'sslv23'   => STREAM_CRYPTO_METHOD_SSLv23_CLIENT,
+        'sslv3' => STREAM_CRYPTO_METHOD_SSLv3_CLIENT,
+        'tls'   => STREAM_CRYPTO_METHOD_TLS_CLIENT,
+        'tlsv1' => STREAM_CRYPTO_METHOD_TLSv1_0_CLIENT,
+        'tlsv11' => STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT,
+        'tlsv12' => STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
     ];
-      
+    
     public function __construct(array $options = [])
     {
         $options += [
@@ -128,49 +124,37 @@ class Socket
     /**
      * Enables Encryption
      *
-     * @example
-     *      $socket->enableEncryption('tls','client');
-     *      $socket->enableEncryption('tls','server');
-     *
      * @see https://www.php.net/manual/en/function.stream-socket-enable-crypto.php
-     * @param string $type sslv3,sslv23,tls,tlsv1,tlsv11,tlsv12
-     * @param string $clientOrServer default 'client' or set to 'server'
+     * @param string $type ssl,sslv2,sslv23,sslv3,tls,tlsv1,tlsv11,tlsv12
      * @return boolean
      */
-    public function enableEncryption(string $type, string $clientOrServer = 'client') : bool
+    public function enableEncryption(string $type) : bool
     {
-        return $this->enableCrypto($type, $clientOrServer, true);
+        return $this->enableCrypto($type, true);
     }
 
     /**
      * Disables Encryption
      *
-     * @example
-     *      $socket->disableEncryption('tls','client');
-     *      $socket->disableEncryption('tls','server');
-     *
      * @see https://www.php.net/manual/en/function.stream-socket-enable-crypto.php
-     * @param string $type sslv3,sslv23,tls,tlsv1,tlsv11,tlsv12
-     * @param string $clientOrServer default 'client' or set to 'server'
+     * @param string $type ssl,sslv2,sslv23,sslv3,tls,tlsv1,tlsv11,tlsv12
      * @return boolean
      */
-    public function disableEncryption(string $type, string $clientOrServer = 'client') : bool
+    public function disableEncryption(string $type) : bool
     {
-        return $this->enableCrypto($type, $clientOrServer, false);
+        return $this->enableCrypto($type, false);
     }
 
     /**
      * Enables (or disables crypto) on a socket
      *
      * @see https://www.php.net/manual/en/function.stream-socket-enable-crypto.php
-     * @param string $type sslv3,sslv23,tls,tlsv1,tlsv11,tlsv12
-     * @param string $clientOrServer default 'client' or set to 'server'
+     * @param string $encryptionMethod ssl,sslv2,sslv23,sslv3,tls,tlsv1,tlsv11,tlsv12
      * @param boolean $enable
      * @return boolean
      */
-    private function enableCrypto(string $type, string $clientOrServer, bool $enable = true) : bool
+    private function enableCrypto(string $encryptionMethod, bool $enable = true) : bool
     {
-        $encryptionMethod = $type .'_'. $clientOrServer;
         if (! array_key_exists($encryptionMethod, $this->encryptionMethods)) {
             throw new InvalidArgumentException('Invalid Encryption scheme');
         }
