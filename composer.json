@@ -5,7 +5,10 @@
     "keywords": [
         "originphp",
         "socket",
-        "socket"
+        "socket",
+        "ssl",
+        "tls",
+        "stream"
     ],
     "homepage": "https://www.originphp.com",
     "license": "MIT",
