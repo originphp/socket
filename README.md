@@ -50,6 +50,20 @@ $socket->disableEncryption('tls');
 $socket->disableEncryption('ssl');
 ```
 
+## Host/IP Address
+
+To get the IP address of the connection
+
+```php
+$ipAddress = $socket->address();
+```
+
+To get the hostname
+
+```php
+$hostname = $socket->host();
+```
+
 ## Stream Contexts
 
 When creating a Socket you can also provide `context` options that will be used to create a [stream context](https://www.php.net/manual/en/function.stream-context-create.php).
