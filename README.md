@@ -34,11 +34,18 @@ if ($socket->connect()) {
 $socket->disconnect();
 ```
 
-You can can also enable encryption using  `ssl` (alias for ssv23), `sslv2`, `sslv23`, `sslv3`, `tls`, `tlsv1`, `tlsv11` and `tlsv12` encryption methods. See the [PHP manual](https://www.php.net/manual/en/function.stream-socket-enable-crypto.php) for more information on the encryption methods.
+You can can also enable encryption using  `ssl` or `tls`, you can also specify versions e.g. `sslv2`, `sslv23`, `sslv3`, `tlsv1`, `tlsv11` and `tlsv12`. See the [PHP manual](https://www.php.net/manual/en/function.stream-socket-enable-crypto.php) for more information on the encryption methods.
 
-To enable or disable encryption
+To enable encryption
 
 ```php
 $socket->enableEncryption('tls');
+$socket->enableEncryption('ssl');
+```
+
+To disable encryption
+
+```php
 $socket->disableEncryption('tls');
+$socket->disableEncryption('ssl');
 ```
