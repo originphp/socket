@@ -54,11 +54,11 @@ class Socket
      * @var array
      */
     protected $encryptionMethods = [
-        'ssl'   => STREAM_CRYPTO_METHOD_SSLv23_CLIENT,
+        'ssl' => STREAM_CRYPTO_METHOD_SSLv23_CLIENT,
         'sslv2' => STREAM_CRYPTO_METHOD_SSLv2_CLIENT,
-        'sslv23'   => STREAM_CRYPTO_METHOD_SSLv23_CLIENT,
+        'sslv23' => STREAM_CRYPTO_METHOD_SSLv23_CLIENT,
         'sslv3' => STREAM_CRYPTO_METHOD_SSLv3_CLIENT,
-        'tls'   => STREAM_CRYPTO_METHOD_TLS_CLIENT,
+        'tls' => STREAM_CRYPTO_METHOD_TLS_CLIENT,
         'tlsv1' => STREAM_CRYPTO_METHOD_TLSv1_0_CLIENT,
         'tlsv11' => STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT,
         'tlsv12' => STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
