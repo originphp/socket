@@ -72,6 +72,7 @@ class Socket
             'port' => 80,
             'timeout' => 30,
             'persistent' => false,
+            'context' => null // an array
         ];
         $this->config = $options;
     }
@@ -88,8 +89,6 @@ class Socket
             $this->disconnect();
         }
 
-        $context = empty($this->config['context']) ? null : $this->config['context'];
-   
         set_error_handler([$this, 'errorHandler']);
         $this->connection = stream_socket_client(
             $this->socketAddress(),
@@ -97,7 +96,7 @@ class Socket
             $errorMessage,
             $this->config['timeout'],
             $this->config['persistent']  ? STREAM_CLIENT_PERSISTENT : STREAM_CLIENT_CONNECT, // flags
-            stream_context_create($context)
+            stream_context_create($this->config['context'])
         );
         restore_error_handler();
 

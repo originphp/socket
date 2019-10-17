@@ -84,8 +84,8 @@ class SocketTest extends \PHPUnit\Framework\TestCase
         $context = [
             'ssl' => [
                 'verify_peer' => false
-            ]];
-      
+            ]
+        ];
         $socket = new Socket([
             'host' => 'originphp.com','port' => 443,'protocol' => 'ssl','timeout' => 2,
             'context' => $context

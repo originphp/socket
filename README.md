@@ -49,3 +49,21 @@ To disable encryption
 $socket->disableEncryption('tls');
 $socket->disableEncryption('ssl');
 ```
+
+## Stream Contexts
+
+When creating a Socket you can also provide `context` options that will be used to create a [stream context](https://www.php.net/manual/en/function.stream-context-create.php).
+
+```php
+$socket = new Socket([
+    'host' => 'example.com',
+    'protocol' => 'tcp',
+    'port' => 80,
+    'timeout' => 30,
+    'persistent' => false,
+    'context' => [
+        'ssl' => [
+            'verify_peer' => false
+        ]
+]);
+```
