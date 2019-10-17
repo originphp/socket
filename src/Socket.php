@@ -155,7 +155,7 @@ class Socket
     private function enableCrypto(string $encryptionMethod, bool $enable = true) : bool
     {
         if (! array_key_exists($encryptionMethod, $this->encryptionMethods)) {
-            throw new InvalidArgumentException('Invalid Encryption scheme');
+            throw new InvalidArgumentException('Invalid Encryption method.');
         }
 
         try {
@@ -189,7 +189,7 @@ class Socket
             $buffer = fread($this->connection, $bytes);
             $info = stream_get_meta_data($this->connection);
             if ($info['timed_out']) {
-                throw new SocketTimeoutException('Connection timed out');
+                throw new SocketTimeoutException('Connection timed out.');
             }
         }
 
