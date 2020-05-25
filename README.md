@@ -79,5 +79,6 @@ $socket = new Socket([
         'ssl' => [
             'verify_peer' => false
         ]
+    ]
 ]);
 ```
