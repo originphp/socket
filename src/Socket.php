@@ -100,7 +100,7 @@ class Socket
         );
         restore_error_handler();
 
-        if (! empty($errorNumber) or ! empty($errorMessage)) {
+        if (! empty($errorNumber) || ! empty($errorMessage)) {
             $this->lastError("{$errorNumber}:{$errorMessage}");
             throw new SocketException($errorMessage);
         }
@@ -108,7 +108,7 @@ class Socket
         /**
          * Throw exception on ErrorHandler errors (can be multiple)
          */
-        if (! $this->connection and $this->errors) {
+        if (! $this->connection && $this->errors) {
             throw new SocketException(implode("\n", $this->errors));
         }
 
@@ -250,7 +250,7 @@ class Socket
      */
     public function disconnect() : bool
     {
-        if (is_resource($this->connection) and fclose($this->connection)) {
+        if (is_resource($this->connection) && fclose($this->connection)) {
             $this->connection = null;
         }
 
