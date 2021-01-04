@@ -1,7 +1,7 @@
 # Socket
 
 ![license](https://img.shields.io/badge/license-MIT-brightGreen.svg)
-[![build](https://travis-ci.org/originphp/socket.svg?branch=master)](https://travis-ci.org/originphp/socket)
+[![build](https://github.com/originphp/socket/workflows/CI/badge.svg)](https://github.com/originphp/socket/actions)
 [![coverage](https://coveralls.io/repos/github/originphp/socket/badge.svg?branch=master)](https://coveralls.io/github/originphp/socket?branch=master)
 
 The `Socket` class is a lightweight wrapper which makes working with sockets easy.
